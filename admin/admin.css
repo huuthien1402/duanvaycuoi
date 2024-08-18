@@ -1,0 +1,448 @@
+body {
+    margin: 0;
+    font-size: 90%;
+    background: #fff;
+    font-family: 'Lato', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body a {
+    text-decoration: none;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+}
+
+a:hover {
+    text-decoration: none;
+}
+header {
+    z-index: 9;
+    width: 100%;
+}
+
+.toggle,
+[id^=drop] {
+    display: none;
+}
+.main{
+    float: left;
+    width: calc(100% - 100px);
+    padding: 0px 50px;
+}
+
+/* table */
+
+.cart table {
+    width: 100%;
+}
+
+th {
+    background-color: #007bff;
+    color: #FFF;
+}
+
+.cart td,
+.cart th {
+    padding: 5px 10px;
+    border: 1px #CCC solid;
+}
+
+.dathang input[type="text"] {
+    width: 100%;
+}
+
+
+/* Giving a background-color to the nav container. */
+
+nav {
+    margin: 0;
+    padding: 0;
+}
+
+#logo a {
+    float: left;
+    display: initial;
+    margin: 0;
+    letter-spacing: 1px;
+    color: #fff;
+    font-size: 1em;
+    font-weight: 700;
+    text-shadow: 2px 5px 3px rgba(0, 0, 0, 0.06);
+}
+#logo img{
+    width: 130px;
+    height: 130px;
+    margin-left: 12px;
+}
+
+/* Since we'll have the "ul li" "float:left"
+ * we need to add a clear after the container. */
+
+nav:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+/* Removing padding, margin and "list-style" from the "ul",
+ * and adding "position:reltive" */
+
+nav ul {
+    float: right;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    position: relative;
+}
+
+
+/* Positioning the navigation items inline */
+
+nav ul li {
+    margin: 0px 1em;
+    display: inline-block;
+}
+
+
+/* Styling the links */
+
+.menu li a {
+    font-weight: 600;
+    font-size: 0.8em;
+    letter-spacing: 2px;
+    padding-left: 0;
+    padding-right: 0;
+    padding: 10px 0;
+    color: #171313;
+    text-transform: uppercase;
+}
+
+.menu li ul li a {
+    color: #555;
+    padding: 10px 10px;
+    font-size: 0.8em;
+}
+
+.menu li ul li:hover {
+    background: #f8f9fa;
+}
+
+
+/* Background color change on Hover */
+
+nav .menu li a:hover {
+    color: #ff4c4c;
+}
+
+/* .menu li.active a {
+    color: #ff4c4c;
+} */
+
+
+/* Hide Dropdowns by Default
+ * and giving it a position of absolute */
+
+nav ul ul {
+    display: none;
+    position: absolute;
+    /* has to be the same number as the "line-height" of "nav a" */
+    top: 30px;
+    background: #050101;
+    padding: 10px;
+}
+
+
+/* Display Dropdowns on Hover */
+
+nav ul li:hover>ul {
+    display: inherit;
+}
+
+
+/* Fisrt Tier Dropdown */
+
+nav ul ul li {
+    width: 170px;
+    float: none;
+    display: list-item;
+    position: relative;
+    margin: 0;
+}
+
+nav ul ul li a {
+    color: #333;
+    padding: 5px 10px;
+    display: block;
+}
+
+
+/* Second, Third and more Tiers	
+ * We move the 2nd and 3rd etc tier dropdowns to the left
+ * by the amount of the width of the first tier.
+*/
+
+nav ul ul ul li {
+    position: relative;
+    top: -60px;
+    /* has to be the same number as the "width" of "nav ul ul li" */
+    left: 170px;
+}
+
+
+/* Change ' +' in order to change the Dropdown symbol */
+
+li>a:only-child:after {
+    content: '';
+}
+/* Media Queries
+--------------------------------------------- */
+
+@media all and (max-width: 768px) {
+    #logo {
+        display: block;
+        padding: 0;
+        width: 100%;
+        text-align: center;
+        float: none;
+    }
+    nav {
+        margin: 0;
+    }
+    /* Hide the navigation menu by default */
+    /* Also hide the  */
+    .toggle+a,
+    .menu {
+        display: none;
+    }
+    /* Stylinf the toggle lable */
+    .toggle {
+        display: block;
+        padding: 8px 20px;
+        font-size: 0.8em;
+        text-decoration: none;
+        border: none;
+        float: right;
+        background-color: #ffffff;
+        color: #333;
+        cursor: pointer;
+        text-transform: uppercase;
+    }
+    .menu .toggle {
+        float: none;
+        text-align: center;
+        margin: auto;
+        width: 80%;
+        padding: 5px;
+        font-weight: normal;
+        font-size: 16px;
+        letter-spacing: 1px;
+    }
+    .toggle:hover {
+        color: #333;
+        background-color: #fff;
+    }
+    /* Display Dropdown when clicked on Parent Lable */
+    [id^=drop]:checked+ul {
+        display: block;
+        background: rgba(16, 16, 16, 0.85);
+        padding: 15px 0;
+        text-align: center;
+    }
+    /* Change menu item's width to 100% */
+    nav ul li {
+        display: block;
+        width: 100%;
+        padding: 5px 0;
+        margin: 0 0;
+    }
+    nav ul ul .toggle,
+    nav ul ul a {
+        padding: 0 40px;
+    }
+    nav ul ul ul a {
+        padding: 0 80px;
+    }
+    nav a:hover,
+    nav ul ul ul a {
+        background-color: transparent;
+    }
+    nav ul li ul li .toggle,
+    nav ul ul a,
+    nav ul ul ul a {
+        padding: 14px 20px;
+        color: #FFF;
+        font-size: 17px;
+    }
+    nav ul li ul li .toggle,
+    nav ul ul a {
+        background-color: #212121;
+    }
+    .menu li ul li a {
+        color: #fff;
+    }
+    /* Hide Dropdowns by Default */
+    nav ul ul {
+        float: none;
+        position: static;
+        color: #ffffff;
+        /* has to be the same number as the "line-height" of "nav a" */
+    }
+    /* Hide menus on hover */
+    nav ul ul li:hover>ul,
+    nav ul li:hover>ul {
+        display: none;
+    }
+    nav ul ul {
+        background: none!important;
+    }
+    /* Fisrt Tier Dropdown */
+    nav ul ul li {
+        display: block;
+        width: 100%;
+        padding: 0;
+    }
+    nav ul ul ul li {
+        position: static;
+        /* has to be the same number as the "width" of "nav ul ul li" */
+    }
+    nav ul ul li a {
+        color: #fff;
+        font-size: 0.85em;
+    }
+}
+
+@media all and (max-width: 330px) {
+    nav ul li {
+        display: block;
+        width: 94%;
+    }
+}
+form{
+    margin-left: 100px;
+}
+.row{
+    float: left;
+    width: 100%;
+    margin: 12px 12px;
+}
+
+.row .header {
+    background-color: #1870e3;
+    border: 1px #0725e9af solid;
+    color: #f0b626;
+    border-radius: 5px;
+    font-size: 10px;
+    padding: 0px 20px;
+}
+
+.formcontent{
+    padding: 20px 0px;
+}
+
+.mb11 select[name="madanhmuc"]{
+    width: 40%;
+}
+
+.formcontent input[type="text"],
+.formcontent input[type="email"],
+.formcontent input[type="password"]{
+    width: 70%;
+    border: 1px #CCC solid;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.formcontent input[type="submit"],
+.formcontent input[type="reset"],
+.formcontent input[type="button"]{
+    border-radius: 5px;
+    padding: 5px 10px;
+    background-color: white;
+    border: 1px #CCC solid;
+}
+
+.formcontent input[type="submit"]:hover,
+.formcontent input[type="reset"]:hover,
+.formcontent input[type="button"]:hover{
+    background-color: #1870e3;
+}
+
+.mb10{
+    margin-bottom: 10px; 
+}
+
+.formdsloai table{
+    width: 90%;
+    border-collapse: collapse;
+}
+
+.formdsloai table th{
+    width: 5%;
+    padding: 20px 20px;
+    color: #050101;
+    background-color: cornflowerblue;
+    border: 1px #212121 solid;
+}
+
+.formdsloai table th:nth-child(2){
+    width: 20%;
+    color: #050101;
+    background-color: cornflowerblue;
+}
+
+.formdsloai table th:nth-child(3){
+    width: 25%;
+    color: #050101;
+    background-color: cornflowerblue;
+}
+
+.formdsloai table th:nth-child(4){
+    width: 15%;
+    color: #050101;
+    background-color: cornflowerblue;
+}
+.formdsloai table th:nth-child(5){
+    width: 10%;
+    color: #050101;
+    background-color: cornflowerblue;
+}
+.formdsloai table th:nth-child(6){
+    width: 30%;
+    color: #050101;
+    background-color: cornflowerblue;
+}
+.formdsloai table th:nth-child(7){
+    width: 30%;
+    color: #050101;
+    background-color: cornflowerblue;
+}
+
+.formdsloai table th:nth-child(8){
+    width: 30%;
+    color: #050101;
+    background-color: cornflowerblue;
+}
+.formdsloai table td{
+    padding: 10px 20px;
+    border: 1px #212121 solid;
+}
+
+.mb11 select[name="MaLoai"]{
+    width: 15%;
+}
+.mb20{
+    margin-top: 10px;
+}
+.mb20 input[type="button"]{
+    border-radius: 5px;
+    padding: 5px 10px;
+    background-color: white;
+    border: 1px #CCC solid;
+}
+.mb20 input[type="button"]:hover{
+    background-color: #1870e3;
+}
